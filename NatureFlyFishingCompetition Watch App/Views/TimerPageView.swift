@@ -21,44 +21,42 @@ struct TimerPageView: View {
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
 
-            // Label contextual
-            Text(isFree ? "transcurrido" : "restante")
-                .font(.system(size: 10))
-                .foregroundStyle(.secondary)
-
             Spacer(minLength: 6)
 
-            // Botón principal — Pause / Resume (ocupa todo el ancho)
-            Button(action: isRunning ? viewModel.pauseWorkout : viewModel.startWorkout) {
-                Label(
-                    isRunning ? "Pausa" : "Reanudar",
-                    systemImage: isRunning ? "pause.fill" : "play.fill"
-                )
-                .font(.system(size: 15, weight: .semibold))
-                .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(isRunning ? .yellow : .teal)
-
-            // Botones secundarios
+            
             HStack(spacing: 8) {
-                // Finalizar
-                Button(action: viewModel.finishManually) {
-                    Label("Fin", systemImage: "flag.checkered")
-                        .font(.system(size: 13, weight: .medium))
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.bordered)
-                .tint(.red)
 
-                // Reset
-                Button(action: viewModel.resetWorkout) {
-                    Image(systemName: "arrow.counterclockwise")
-                        .font(.system(size: 13, weight: .medium))
-                        .frame(maxWidth: .infinity)
+                // FINISH
+                VStack(spacing: 4) {
+                    Button(action: viewModel.finishManually) {
+                        Image(systemName: "flag.checkered")
+                            .font(.system(size: 18, weight: .medium))
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(.red)
+
+                    Text("Fin")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
                 }
-                .buttonStyle(.bordered)
-                .tint(.gray)
+                .frame(maxWidth: .infinity)
+
+                // START / PAUSE
+                VStack(spacing: 4) {
+                    Button(action: isRunning ? viewModel.pauseWorkout : viewModel.startWorkout) {
+                        Image(systemName: isRunning ? "pause.fill" : "play.fill")
+                            .font(.system(size: 18, weight: .semibold))
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(isRunning ? .yellow : .teal)
+
+                    Text(isRunning ? "Pausa" : "Reanudar")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
+                }
+                .frame(maxWidth: .infinity)
             }
         }
         .padding(.horizontal, 4)
@@ -92,7 +90,7 @@ struct TimerPageView: View {
                 .foregroundStyle(.secondary)
                 .font(.system(size: 11))
 
-            Text(isFree ? "Libre" : "Tiempo")
+            Text(isFree ? "Libre" : "Temporizado")
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
         }

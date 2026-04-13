@@ -2,9 +2,17 @@ import SwiftUI
 
 struct CountersPageView: View {
     @EnvironmentObject var viewModel: WorkoutViewModel
+    private var isRunning: Bool { viewModel.workoutState == .running }
+    private var isFree:    Bool { viewModel.workoutMode  == .free }
 
     var body: some View {
         VStack(spacing: 10) {
+            Text(viewModel.formattedDisplay)
+                .font(.system(size: 40, weight: .bold, design: .monospaced))
+                .foregroundStyle(timerColor)
+                .minimumScaleFactor(0.6)
+                .lineLimit(1)
+
 
             // Peces T
             CounterRow(
@@ -25,23 +33,19 @@ struct CountersPageView: View {
                 onDecrement: viewModel.decrementPecesM,
                 color: .blue
             )
-
-            Divider()
-
-            // Total
-            HStack {
-                Text("Total")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                Spacer()
-                Text("\(viewModel.pecesT + viewModel.pecesM)")
-                    .font(.system(size: 20, weight: .bold, design: .monospaced))
-                    .foregroundStyle(.white)
-            }
-            .padding(.horizontal, 6)
         }
         .padding(.horizontal, 4)
         .padding(.vertical, 4)
+    }
+    private var timerColor: Color {
+        guard viewModel.workoutMode == .timed else { return .teal }
+        let total = Double(viewModel.selectedDuration * 60)
+        let ratio = viewModel.remainingTime / max(1, total)
+        switch ratio {
+        case 0.5...:    return .green
+        case 0.2..<0.5: return .yellow
+        default:         return .red
+        }
     }
 }
 
@@ -95,6 +99,8 @@ private struct CounterRow: View {
     }
 }
 
+
+
 #Preview {
     let vm = WorkoutViewModel()
     vm.pecesT = 4
@@ -102,3 +108,19 @@ private struct CounterRow: View {
     return CountersPageView()
         .environmentObject(vm)
 }
+
+
+#Preview("En curso") {
+    let vm = WorkoutViewModel()
+    vm.workoutMode = .timed
+    return TimerPageView()
+        .environmentObject(vm)
+}
+
+#Preview("Modo libre") {
+    let vm = WorkoutViewModel()
+    vm.workoutMode = .free
+    return TimerPageView()
+        .environmentObject(vm)
+}
+

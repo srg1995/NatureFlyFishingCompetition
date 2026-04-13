@@ -7,12 +7,10 @@ struct SetupView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
-
-                
                 Divider()
 
                 // Selector de modo
-                HStack(spacing: 6) {
+                HStack(spacing: 0) {
                     ForEach(WorkoutMode.allCases, id: \.self) { mode in
                         let selected = viewModel.workoutMode == mode
                         Button {
@@ -22,14 +20,13 @@ struct SetupView: View {
                                 .font(.system(size: 12, weight: selected ? .semibold : .regular))
                                 .frame(maxWidth: .infinity)
                         }
-                        .buttonStyle(.bordered)
                         .tint(selected ? .teal : .gray)
                     }
                 }
 
                 // Configuración de duración (solo en modo timed)
                 if viewModel.workoutMode == .timed {
-                    VStack(spacing: 4) {
+                    VStack(spacing: 2) {
                         Text("Duración")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -45,15 +42,12 @@ struct SetupView: View {
                     .transition(.opacity.combined(with: .move(edge: .top)))
                 } else {
                     // Descripción modo libre
-                    VStack(spacing: 4) {
+                    VStack(spacing: 2) {
                         Image(systemName: "infinity")
                             .font(.title3)
                             .foregroundStyle(.teal)
                         Text("Sin límite de tiempo")
                             .font(.caption)
-                            .foregroundStyle(.secondary)
-                        Text("Tú decides cuándo parar")
-                            .font(.system(size: 10))
                             .foregroundStyle(.secondary)
                     }
                     .padding(.vertical, 6)

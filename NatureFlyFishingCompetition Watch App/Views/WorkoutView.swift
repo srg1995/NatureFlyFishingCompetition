@@ -2,15 +2,18 @@ import SwiftUI
 
 struct WorkoutView: View {
     @EnvironmentObject var viewModel: WorkoutViewModel
+    @State private var selectedPage = 1
 
     var body: some View {
-        TabView {
+        TabView(selection: $selectedPage) {
             TimerPageView()
                 .tag(0)
-
             CountersPageView()
                 .tag(1)
-        }
+
+           
+
+                    }
         .tabViewStyle(.page)
     }
 }
