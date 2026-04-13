@@ -4,11 +4,7 @@ struct CountersPageView: View {
     @EnvironmentObject var viewModel: WorkoutViewModel
 
     var body: some View {
-        VStack(spacing: 14) {
-
-            Text("Peces")
-                .font(.caption2)
-                .foregroundStyle(.secondary)
+        VStack(spacing: 10) {
 
             // Peces T
             CounterRow(
@@ -30,18 +26,22 @@ struct CountersPageView: View {
                 color: .blue
             )
 
+            Divider()
+
             // Total
             HStack {
-                Text("Total:")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                Text("\(viewModel.pecesT + viewModel.pecesM)")
+                Text("Total")
                     .font(.caption)
-                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text("\(viewModel.pecesT + viewModel.pecesM)")
+                    .font(.system(size: 20, weight: .bold, design: .monospaced))
                     .foregroundStyle(.white)
             }
+            .padding(.horizontal, 6)
         }
-        .padding(.horizontal, 6)
+        .padding(.horizontal, 4)
+        .padding(.vertical, 4)
     }
 }
 
@@ -55,17 +55,20 @@ private struct CounterRow: View {
     let color: Color
 
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 0) {
             // Label
             Text(label)
-                .font(.system(size: 13, weight: .medium))
-                .frame(width: 42, alignment: .leading)
+                .font(.system(size: 14, weight: .medium))
+                .frame(width: 44, alignment: .leading)
+                .padding(.leading, 4)
+
+            Spacer()
 
             // Minus
             Button(action: onDecrement) {
                 Image(systemName: "minus")
-                    .font(.system(size: 14, weight: .bold))
-                    .frame(width: 28, height: 28)
+                    .font(.system(size: 15, weight: .bold))
+                    .frame(width: 36, height: 36)
             }
             .buttonStyle(.bordered)
             .tint(value > 0 ? color : .gray)
@@ -73,18 +76,21 @@ private struct CounterRow: View {
 
             // Count
             Text("\(value)")
-                .font(.system(size: 20, weight: .bold, design: .monospaced))
+                .font(.system(size: 26, weight: .bold, design: .monospaced))
                 .foregroundStyle(color)
-                .frame(minWidth: 28)
+                .frame(minWidth: 40)
+                .multilineTextAlignment(.center)
 
             // Plus
             Button(action: onIncrement) {
                 Image(systemName: "plus")
-                    .font(.system(size: 14, weight: .bold))
-                    .frame(width: 28, height: 28)
+                    .font(.system(size: 15, weight: .bold))
+                    .frame(width: 36, height: 36)
             }
             .buttonStyle(.bordered)
             .tint(color)
+
+            Spacer(minLength: 4)
         }
     }
 }
