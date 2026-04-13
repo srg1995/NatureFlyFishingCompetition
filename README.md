@@ -6,13 +6,24 @@ App para Apple Watch diseñada para competiciones de pesca con mosca. Permite cr
 
 ## ✨ Funcionalidades
 
-### ⏱ Temporizador de competición
-- Duración configurable en horas y minutos (por defecto 1h)
-- Controles de **Inicio / Pausa / Reset** y finalización manual
-- Cuenta atrás con cambio de color progresivo: blanco → amarillo → rojo
+### 🏁 Modos de competición
+
+- **Tiempo** ⏱ — Duración configurable de 10 a 120 minutos (en pasos de 10 min, por defecto 60). La sesión termina automáticamente al llegar a 0.
+- **Libre** 🆓 — Sin límite de tiempo. El usuario decide cuándo finalizar.
+
+### ⏱ Temporizador
+
+- Cuenta atrás (modo Tiempo) o tiempo transcurrido (modo Libre)
+- Controles de **Inicio / Pausa / Finalizar**
+- Cambio de color progresivo según el tiempo restante:
+  - `> 50%` → 🟢 verde
+  - `20–50%` → 🟡 amarillo
+  - `< 20%` → 🔴 rojo
 - El timer sigue corriendo con la pantalla apagada gracias a `HKWorkoutSession`
+- Las pausas se descuentan correctamente del tiempo de competición
 
 ### 🐟 Contadores de capturas
+
 - **Peces T** — en rojo 🔴
 - **Peces M** — en azul 🔵
 - Botones `+` y `−` con feedback háptico
@@ -20,25 +31,30 @@ App para Apple Watch diseñada para competiciones de pesca con mosca. Permite cr
 - Accesibles deslizando desde el timer (TabView)
 
 ### 🏁 Fin de sesión
-- Al llegar a 0 o pulsar la bandera, la sesión se cierra automáticamente
+
+- Al llegar a 0 (modo Tiempo) o pulsar la bandera, la sesión se cierra automáticamente
 - Resumen inmediato con duración, capturas y estado de sincronización
 
 ### 🍎 Apple Fitness (HealthKit)
+
 - Guarda el entrenamiento como actividad de tipo **Other**
 - Registra fecha/hora de inicio y fin
+- Incluye metadatos de capturas y modo de sesión
 - Solicita permisos en el primer uso
 - Usa `HKWorkoutSession` + `HKLiveWorkoutBuilder`
 
 ### 🟠 Strava
+
 - Sube la actividad automáticamente al finalizar
 - Incluye en la descripción los valores de Peces T, Peces M y Total
 - Refresca el token OAuth2 automáticamente antes de que expire
 - La autenticación inicial se realiza desde el iPhone companion vía WatchConnectivity
 
 ### 📋 Historial de sesiones
+
 - Guarda hasta 100 sesiones localmente con `UserDefaults`
 - Estadísticas globales: total de sesiones, peces totales, media y récord 🏆
-- Vista de detalle por sesión con comparativa T vs M
+- Vista de detalle por sesión con comparativa T vs M y medallero del ganador
 - Eliminar sesiones individualmente (swipe) o borrar todo
 
 ---
@@ -46,15 +62,15 @@ App para Apple Watch diseñada para competiciones de pesca con mosca. Permite cr
 ## 🖥 Pantallas
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   🎣 Inicio     │    │   ⏱ Timer       │    │   🐟 Peces      │
-│                 │    │                 │    │                 │
-│  Duración       │    │  00:45:23       │ ←→ │  T  [−]  7  [+] │
-│  [1h] [0m]      │ →  │  ● En curso     │    │  M  [−]  5  [+] │
-│                 │    │                 │    │                 │
-│  [ Iniciar ]    │    │ [⏸] [🏁] [↺]   │    │  Total: 12      │
-│  [ Historial ]  │    │   ← Peces       │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+┌─────────────────┐    ┌─────────────────┐    ┌──────────────────┐
+│   🎣 Inicio     │    │   ⏱ Timer       │    │   🐟 Peces       │
+│                 │    │                 │    │                  │
+│  ⏱ Tiempo  🆓  │    │  00:45:23       │ ←→ │  T  [−]  7  [+]  │
+│  Duración 60min │ →  │  ● En curso     │    │  M  [−]  5  [+]  │
+│                 │    │                 │    │                  │
+│  [ Iniciar ]    │    │ [⏸] [🏁]        │    │  Total: 12       │
+│  [ Historial ]  │    │                 │    │                  │
+└─────────────────┘    └─────────────────┘    └──────────────────┘
 
 ┌─────────────────┐    ┌─────────────────────────────────┐
 │   🏁 Resultado  │    │  📋 Historial                   │
@@ -91,16 +107,16 @@ NatureFlyFishingCompetition Watch App/
 │   └── StravaService.swift                # OAuth2 token refresh + REST API
 │
 └── Views/
-    ├── SetupView.swift                    # Configuración de duración + acceso historial
+    ├── SetupView.swift                    # Selector de modo/duración + acceso historial
     ├── WorkoutView.swift                  # TabView deslizable durante el entrenamiento
-    ├── TimerPageView.swift                # Cuenta atrás + controles
+    ├── TimerPageView.swift                # Cuenta atrás/tiempo + controles
     ├── CountersPageView.swift             # Contadores T y M
     ├── SummaryView.swift                  # Resumen post-sesión + estado sync
     ├── HistoryView.swift                  # Lista de sesiones + estadísticas
     └── HistoryDetailView.swift            # Detalle de sesión individual
 ```
 
-**Patrón:** MVVM — `@StateObject` / `@EnvironmentObject` / `@ObservedObject`
+**Patrón:** MVVM — `@StateObject` / `@EnvironmentObject` / `@ObservedObject` / `@MainActor`
 
 ---
 
@@ -192,9 +208,9 @@ stravaService.storeTokens(
 - **Peces M** → 🔵 azul en todas las vistas
 - Botones grandes optimizados para uso con guantes o en exteriores
 - Timer cambia de color según el tiempo restante:
-  - `> 30%` restante → ⚪ blanco
-  - `10–30%` restante → 🟡 amarillo
-  - `< 10%` restante → 🔴 rojo
+  - `> 50%` restante → 🟢 verde
+  - `20–50%` restante → 🟡 amarillo
+  - `< 20%` restante → 🔴 rojo
 
 ---
 
