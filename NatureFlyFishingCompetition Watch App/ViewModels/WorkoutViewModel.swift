@@ -199,7 +199,7 @@ final class WorkoutViewModel: ObservableObject {
     private func syncWorkout(session: WorkoutSession) {
         isSyncing = true
 
-        healthKit.endSession(endDate: session.endDate) { [weak self] success, _ in
+        healthKit.endSession(session: session) { [weak self] success, _ in
             Task { @MainActor [weak self] in self?.healthKitSaved = success }
         }
 

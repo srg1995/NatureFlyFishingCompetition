@@ -32,12 +32,18 @@ targets:
         CFBundleName: "NatureFlyFishing"
         WKWatchOnly: true
         WKApplication: true
-        NSHealthShareUsageDescription: "Registramos tus entrenamientos de pesca en Apple Fitness."
-        NSHealthUpdateUsageDescription: "Guardamos tus sesiones de competición en Apple Fitness."
+        NSHealthShareUsageDescription: "Registramos tus entrenamientos de pesca con mosca en Apple Fitness."
+        NSHealthUpdateUsageDescription: "Guardamos tus sesiones de competición de pesca en Apple Fitness."
         NSMotionUsageDescription: "Usamos el movimiento para mejorar la precisión del entrenamiento."
 
     entitlements:
       path: "NatureFlyFishingCompetition Watch App/NatureFlyFishingCompetition Watch App.entitlements"
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access:
+          - health-records
+        com.apple.security.application-groups:
+          - group.com.natureflyfish
 
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.natureflyfish.watch

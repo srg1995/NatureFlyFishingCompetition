@@ -21,9 +21,9 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Registramos tus entrenamientos de pesca en Apple Fitness.</string>
+	<string>Registramos tus entrenamientos de pesca con mosca en Apple Fitness.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Guardamos tus sesiones de competición en Apple Fitness.</string>
+	<string>Guardamos tus sesiones de competición de pesca en Apple Fitness.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Usamos el movimiento para mejorar la precisión del entrenamiento.</string>
 	<key>WKApplication</key>
