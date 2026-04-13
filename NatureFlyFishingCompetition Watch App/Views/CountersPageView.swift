@@ -88,3 +88,11 @@ private struct CounterRow: View {
         }
     }
 }
+
+#Preview {
+    let vm = WorkoutViewModel()
+    vm.pecesT = 4
+    vm.pecesM = 7
+    return CountersPageView()
+        .environmentObject(vm)
+}

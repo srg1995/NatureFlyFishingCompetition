@@ -92,3 +92,17 @@ struct TimerPageView: View {
         }
     }
 }
+
+#Preview("En curso") {
+    let vm = WorkoutViewModel()
+    vm.workoutMode   = .timed
+    return TimerPageView()
+        .environmentObject(vm)
+}
+
+#Preview("Modo libre") {
+    let vm = WorkoutViewModel()
+    vm.workoutMode = .free
+    return TimerPageView()
+        .environmentObject(vm)
+}

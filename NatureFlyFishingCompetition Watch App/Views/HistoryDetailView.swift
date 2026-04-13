@@ -96,3 +96,16 @@ struct HistoryDetailView: View {
             .clipShape(Capsule())
     }
 }
+
+#Preview {
+    NavigationStack {
+        HistoryDetailView(session: WorkoutSession(
+            startDate: Date().addingTimeInterval(-3600),
+            endDate:   Date(),
+            duration:  3600,
+            pecesT:    7,
+            pecesM:    5,
+            mode:      .timed
+        ))
+    }
+}

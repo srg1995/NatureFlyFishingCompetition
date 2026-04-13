@@ -130,3 +130,19 @@ private struct SyncStatusRow: View {
         }
     }
 }
+
+#Preview {
+    let vm = WorkoutViewModel()
+    vm.lastSession = WorkoutSession(
+        startDate: Date().addingTimeInterval(-3600),
+        endDate:   Date(),
+        duration:  3600,
+        pecesT:    7,
+        pecesM:    5,
+        mode:      .timed
+    )
+    vm.healthKitSaved = true
+    vm.stravaSaved    = false
+    return NavigationStack { SummaryView() }
+        .environmentObject(vm)
+}

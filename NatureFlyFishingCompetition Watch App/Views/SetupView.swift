@@ -133,3 +133,10 @@ struct SetupView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
+#Preview {
+    NavigationStack {
+        SetupView()
+    }
+    .environmentObject(WorkoutViewModel())
+}

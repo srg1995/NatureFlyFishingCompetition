@@ -130,3 +130,10 @@ struct SessionRowView: View {
         .padding(.vertical, 2)
     }
 }
+
+#Preview {
+    let store = WorkoutHistoryStore.shared
+    store.add(WorkoutSession(startDate: Date().addingTimeInterval(-7200), endDate: Date().addingTimeInterval(-3600), duration: 3600, pecesT: 7, pecesM: 5, mode: .timed))
+    store.add(WorkoutSession(startDate: Date().addingTimeInterval(-86400), endDate: Date().addingTimeInterval(-82800), duration: 3900, pecesT: 3, pecesM: 9, mode: .free))
+    return NavigationStack { HistoryView() }
+}
