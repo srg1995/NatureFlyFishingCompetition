@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03986ACD23E3949B82B58C66 /* NatureFlyFishingCompetitionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BE8C39D75706FBA2D41D0 /* NatureFlyFishingCompetitionApp.swift */; };
+		0D19BE3880644925F3167341 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7708E9F5088A8E4258084 /* WorkoutView.swift */; };
+		1300A9D206C82684E2ABA31F /* StravaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0073002DE523814423FB4C7 /* StravaService.swift */; };
+		2ABE3132431FD794275E1A04 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB7187D3E279D7FDB607D03 /* HealthKit.framework */; };
+		314EBC32E685B74E31A2EABF /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74A0059565E69A54504611B /* HistoryDetailView.swift */; };
+		475EB30C50EA56A66E056933 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C6C543BA55EEDDC7085D2 /* HistoryView.swift */; };
+		71C00C0258712C485D8D298B /* TimerPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973053ABA12D73DB1B22B8B7 /* TimerPageView.swift */; };
+		7EB06A287CDF086ED781F9C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7999088DB9FB0738B0ECB7D /* ContentView.swift */; };
+		8FD86FC47A466393EE793C46 /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC000BDE050E5444CC02EF /* WorkoutSession.swift */; };
+		9C6293E7DBF880B11D92C691 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535CB4313E41B5D3AA218B9 /* HealthKitService.swift */; };
+		A68F4EA97FDC0365E43A476E /* CountersPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B883B559BE8AA0C20F5946C /* CountersPageView.swift */; };
+		BBBA40F13DB05742EBD6C124 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21FD26124EB4525C5F1FA5C /* SetupView.swift */; };
+		BF4CEAFDBE8063224F5EA47B /* WorkoutHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07E3DE7264B2252581990F /* WorkoutHistoryStore.swift */; };
+		DC6F28B68DFD0E60E43B9CDE /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37641ED090D00AD4B6DC0934 /* WatchKit.framework */; };
+		DD5E23F53EE1B5869C57A487 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720D00B6954C7BADA7F4E790 /* SummaryView.swift */; };
+		E1E9ECA0A24BB0CAE50C5143 /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A310A2A3F1A7EDFA67DB31 /* WorkoutViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		24A310A2A3F1A7EDFA67DB31 /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
+		2D07E3DE7264B2252581990F /* WorkoutHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryStore.swift; sourceTree = "<group>"; };
+		31882BC6F46FFBBA3CD8814B /* NatureFlyFishingCompetition Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NatureFlyFishingCompetition Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37641ED090D00AD4B6DC0934 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
+		4535CB4313E41B5D3AA218B9 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		4AB7187D3E279D7FDB607D03 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		5B4BE8C39D75706FBA2D41D0 /* NatureFlyFishingCompetitionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatureFlyFishingCompetitionApp.swift; sourceTree = "<group>"; };
+		5B883B559BE8AA0C20F5946C /* CountersPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersPageView.swift; sourceTree = "<group>"; };
+		720D00B6954C7BADA7F4E790 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		81A7708E9F5088A8E4258084 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		973053ABA12D73DB1B22B8B7 /* TimerPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPageView.swift; sourceTree = "<group>"; };
+		C21FD26124EB4525C5F1FA5C /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		CCCC000BDE050E5444CC02EF /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
+		D0073002DE523814423FB4C7 /* StravaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StravaService.swift; sourceTree = "<group>"; };
+		D74A0059565E69A54504611B /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
+		E14C6C543BA55EEDDC7085D2 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		F7999088DB9FB0738B0ECB7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		068D8964DB418B59DE2DFBF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ABE3132431FD794275E1A04 /* HealthKit.framework in Frameworks */,
+				DC6F28B68DFD0E60E43B9CDE /* WatchKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		098B126AF1E912B41F3949F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B883B559BE8AA0C20F5946C /* CountersPageView.swift */,
+				D74A0059565E69A54504611B /* HistoryDetailView.swift */,
+				E14C6C543BA55EEDDC7085D2 /* HistoryView.swift */,
+				C21FD26124EB4525C5F1FA5C /* SetupView.swift */,
+				720D00B6954C7BADA7F4E790 /* SummaryView.swift */,
+				973053ABA12D73DB1B22B8B7 /* TimerPageView.swift */,
+				81A7708E9F5088A8E4258084 /* WorkoutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0AFC334D2C7F1CB38662F54F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D07E3DE7264B2252581990F /* WorkoutHistoryStore.swift */,
+				CCCC000BDE050E5444CC02EF /* WorkoutSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0D4507FDD7706213E38225EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31882BC6F46FFBBA3CD8814B /* NatureFlyFishingCompetition Watch App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		53C97DE176D42D898EFBE54E = {
+			isa = PBXGroup;
+			children = (
+				A5820A630C13B7BBD79B4E3D /* NatureFlyFishingCompetition Watch App */,
+				F8C2A9651E9992AA0BEE93EF /* Frameworks */,
+				0D4507FDD7706213E38225EA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5820A630C13B7BBD79B4E3D /* NatureFlyFishingCompetition Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				0AFC334D2C7F1CB38662F54F /* Models */,
+				F7A6A86C279BC125B9FFD575 /* Services */,
+				B513AB33630D7C0794807B83 /* ViewModels */,
+				098B126AF1E912B41F3949F0 /* Views */,
+				F7999088DB9FB0738B0ECB7D /* ContentView.swift */,
+				5B4BE8C39D75706FBA2D41D0 /* NatureFlyFishingCompetitionApp.swift */,
+			);
+			path = "NatureFlyFishingCompetition Watch App";
+			sourceTree = "<group>";
+		};
+		B513AB33630D7C0794807B83 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				24A310A2A3F1A7EDFA67DB31 /* WorkoutViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F7A6A86C279BC125B9FFD575 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4535CB4313E41B5D3AA218B9 /* HealthKitService.swift */,
+				D0073002DE523814423FB4C7 /* StravaService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F8C2A9651E9992AA0BEE93EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AB7187D3E279D7FDB607D03 /* HealthKit.framework */,
+				37641ED090D00AD4B6DC0934 /* WatchKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		65545E4DAC4E795A4E5444A2 /* NatureFlyFishingCompetition Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC6E0972EFF77BAB945DDDB4 /* Build configuration list for PBXNativeTarget "NatureFlyFishingCompetition Watch App" */;
+			buildPhases = (
+				99E4F7A413770E665FD6C997 /* Sources */,
+				068D8964DB418B59DE2DFBF4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NatureFlyFishingCompetition Watch App";
+			packageProductDependencies = (
+			);
+			productName = "NatureFlyFishingCompetition Watch App";
+			productReference = 31882BC6F46FFBBA3CD8814B /* NatureFlyFishingCompetition Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E911AA4E9E246A26219A4C95 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = FACA9EBA60DFA27C31C13938 /* Build configuration list for PBXProject "NatureFlyFishingCompetition" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 53C97DE176D42D898EFBE54E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0D4507FDD7706213E38225EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65545E4DAC4E795A4E5444A2 /* NatureFlyFishingCompetition Watch App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99E4F7A413770E665FD6C997 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EB06A287CDF086ED781F9C1 /* ContentView.swift in Sources */,
+				A68F4EA97FDC0365E43A476E /* CountersPageView.swift in Sources */,
+				9C6293E7DBF880B11D92C691 /* HealthKitService.swift in Sources */,
+				314EBC32E685B74E31A2EABF /* HistoryDetailView.swift in Sources */,
+				475EB30C50EA56A66E056933 /* HistoryView.swift in Sources */,
+				03986ACD23E3949B82B58C66 /* NatureFlyFishingCompetitionApp.swift in Sources */,
+				BBBA40F13DB05742EBD6C124 /* SetupView.swift in Sources */,
+				1300A9D206C82684E2ABA31F /* StravaService.swift in Sources */,
+				DD5E23F53EE1B5869C57A487 /* SummaryView.swift in Sources */,
+				71C00C0258712C485D8D298B /* TimerPageView.swift in Sources */,
+				BF4CEAFDBE8063224F5EA47B /* WorkoutHistoryStore.swift in Sources */,
+				8FD86FC47A466393EE793C46 /* WorkoutSession.swift in Sources */,
+				0D19BE3880644925F3167341 /* WorkoutView.swift in Sources */,
+				E1E9ECA0A24BB0CAE50C5143 /* WorkoutViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1C156F41F18C7A00E761002D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		B53BE34A8906D409794DEEEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "NatureFlyFishingCompetition Watch App/NatureFlyFishingCompetition Watch App.entitlements";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "NatureFlyFishingCompetition Watch App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.natureflyfish.watch;
+				PRODUCT_NAME = "NatureFlyFishingCompetition Watch App";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		DD5C47B6660E2B317AA740FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "NatureFlyFishingCompetition Watch App/NatureFlyFishingCompetition Watch App.entitlements";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "NatureFlyFishingCompetition Watch App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.natureflyfish.watch;
+				PRODUCT_NAME = "NatureFlyFishingCompetition Watch App";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		FE769437058476D47459DE9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC6E0972EFF77BAB945DDDB4 /* Build configuration list for PBXNativeTarget "NatureFlyFishingCompetition Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD5C47B6660E2B317AA740FD /* Debug */,
+				B53BE34A8906D409794DEEEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FACA9EBA60DFA27C31C13938 /* Build configuration list for PBXProject "NatureFlyFishingCompetition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C156F41F18C7A00E761002D /* Debug */,
+				FE769437058476D47459DE9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E911AA4E9E246A26219A4C95 /* Project object */;
+}

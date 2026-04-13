@@ -1,0 +1,53 @@
+name: NatureFlyFishingCompetition
+
+options:
+  bundleIdPrefix: com.natureflyfish
+  deploymentTarget:
+    watchOS: "9.0"
+  xcodeVersion: "16"
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  defaultConfig: Debug
+
+settings:
+  SWIFT_VERSION: "5.9"
+
+targets:
+
+  NatureFlyFishingCompetition Watch App:
+    type: application
+    platform: watchOS
+    deploymentTarget: "9.0"
+
+    sources:
+      - path: "NatureFlyFishingCompetition Watch App"
+        excludes:
+          - "*.entitlements"
+          - "*.plist"
+
+    info:
+      path: "NatureFlyFishingCompetition Watch App/Info.plist"
+      properties:
+        CFBundleDisplayName: "Nature Fly Fishing"
+        CFBundleName: "NatureFlyFishing"
+        WKWatchOnly: true
+        WKApplication: true
+        NSHealthShareUsageDescription: "Registramos tus entrenamientos de pesca en Apple Fitness."
+        NSHealthUpdateUsageDescription: "Guardamos tus sesiones de competición en Apple Fitness."
+        NSMotionUsageDescription: "Usamos el movimiento para mejorar la precisión del entrenamiento."
+
+    entitlements:
+      path: "NatureFlyFishingCompetition Watch App/NatureFlyFishingCompetition Watch App.entitlements"
+
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.natureflyfish.watch
+      PRODUCT_NAME: "NatureFlyFishingCompetition Watch App"
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
+      ENABLE_PREVIEWS: YES
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+      WATCHOS_DEPLOYMENT_TARGET: "9.0"
+
+    dependencies:
+      - sdk: HealthKit.framework
+      - sdk: WatchKit.framework
