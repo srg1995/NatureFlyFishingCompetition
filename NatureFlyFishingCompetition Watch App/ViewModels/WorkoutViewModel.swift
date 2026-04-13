@@ -23,9 +23,8 @@ final class WorkoutViewModel: ObservableObject {
     @Published var workoutState: WorkoutState = .idle
     @Published var workoutMode: WorkoutMode   = .timed
 
-    // Configuración del timer (modo timed)
-    @Published var selectedHours: Int   = 1
-    @Published var selectedMinutes: Int = 0
+    // Configuración del timer (modo timed) — minutos totales, de 10 en 10 hasta 120, defecto 60
+    @Published var selectedDuration: Int = 60
 
     // Tiempo restante (modo timed) / transcurrido (modo libre)
     @Published var remainingTime: TimeInterval = 3600
@@ -53,7 +52,7 @@ final class WorkoutViewModel: ObservableObject {
     private var timer:            Timer?
 
     private var totalDuration: TimeInterval {
-        TimeInterval(selectedHours * 3600 + selectedMinutes * 60)
+        TimeInterval(selectedDuration * 60)
     }
 
     // MARK: - Computed

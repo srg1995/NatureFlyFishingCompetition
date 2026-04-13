@@ -69,7 +69,7 @@ struct TimerPageView: View {
 
     private var timerColor: Color {
         guard viewModel.workoutMode == .timed else { return .teal }
-        let total = Double(viewModel.selectedHours * 3600 + viewModel.selectedMinutes * 60)
+        let total = Double(viewModel.selectedDuration * 60)
         let ratio = viewModel.remainingTime / max(1, total)
         switch ratio {
         case 0.3...:    return .white

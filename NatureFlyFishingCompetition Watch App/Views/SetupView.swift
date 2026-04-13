@@ -8,19 +8,7 @@ struct SetupView: View {
         ScrollView {
             VStack(spacing: 12) {
 
-                // Header
-                VStack(spacing: 2) {
-                    Text("🎣")
-                        .font(.title2)
-                    Text("Nature Fly")
-                        .font(.headline)
-                        .foregroundStyle(.teal)
-                    Text("Fishing Competition")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                }
-                .padding(.top, 4)
-
+                
                 Divider()
 
                 // Selector de modo
@@ -46,23 +34,12 @@ struct SetupView: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
-                        HStack(spacing: 0) {
-                            Picker("Horas", selection: $viewModel.selectedHours) {
-                                ForEach(0...5, id: \.self) { h in
-                                    Text("\(h)h").tag(h)
-                                }
+                        Picker("Minutos", selection: $viewModel.selectedDuration) {
+                            ForEach(stride(from: 10, through: 120, by: 10).map { $0 }, id: \.self) { min in
+                                Text("\(min) min").tag(min)
                             }
-                            .pickerStyle(.wheel)
-                            .frame(width: 60)
-
-                            Picker("Min", selection: $viewModel.selectedMinutes) {
-                                ForEach([0, 5, 10, 15, 20, 30, 45], id: \.self) { m in
-                                    Text("\(m)m").tag(m)
-                                }
-                            }
-                            .pickerStyle(.wheel)
-                            .frame(width: 60)
                         }
+                        .pickerStyle(.wheel)
                         .frame(height: 80)
                     }
                     .transition(.opacity.combined(with: .move(edge: .top)))
@@ -93,8 +70,7 @@ struct SetupView: View {
                 .tint(.teal)
                 .disabled(
                     viewModel.workoutMode == .timed &&
-                    viewModel.selectedHours == 0 &&
-                    viewModel.selectedMinutes == 0
+                    viewModel.selectedDuration == 0
                 )
                 .animation(.easeInOut, value: viewModel.workoutMode)
 
@@ -129,8 +105,8 @@ struct SetupView: View {
             .padding(.horizontal, 8)
             .animation(.easeInOut(duration: 0.25), value: viewModel.workoutMode)
         }
-        .navigationTitle("Inicio")
-        .navigationBarTitleDisplayMode(.inline)
+        
+        
     }
 }
 
