@@ -167,6 +167,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					65545E4DAC4E795A4E5444A2 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = FACA9EBA60DFA27C31C13938 /* Build configuration list for PBXProject "NatureFlyFishingCompetition" */;
@@ -282,13 +286,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "NatureFlyFishingCompetition Watch App/NatureFlyFishingCompetition Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "NatureFlyFishingCompetition Watch App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.natureflyfish.watch;
 				PRODUCT_NAME = "NatureFlyFishingCompetition Watch App";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -300,6 +306,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "NatureFlyFishingCompetition Watch App/NatureFlyFishingCompetition Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "NatureFlyFishingCompetition Watch App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.natureflyfish.watch;
