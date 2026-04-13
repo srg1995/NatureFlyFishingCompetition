@@ -4,20 +4,25 @@ struct TimerPageView: View {
     @EnvironmentObject var viewModel: WorkoutViewModel
 
     private var isRunning: Bool { viewModel.workoutState == .running }
-    private var isPaused:  Bool { viewModel.workoutState == .paused }
+    private var isFree:    Bool { viewModel.workoutMode  == .free }
 
     var body: some View {
         VStack(spacing: 8) {
 
-            // Estado
+            // Estado + modo
             stateIndicator
 
-            // Tiempo restante
-            Text(viewModel.formattedRemaining)
+            // Tiempo principal
+            Text(viewModel.formattedDisplay)
                 .font(.system(size: 36, weight: .semibold, design: .monospaced))
                 .foregroundStyle(timerColor)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
+
+            // Label contextual
+            Text(isFree ? "transcurrido" : "restante")
+                .font(.system(size: 9))
+                .foregroundStyle(.secondary)
 
             // Controles
             HStack(spacing: 10) {
@@ -29,7 +34,7 @@ struct TimerPageView: View {
                 .buttonStyle(.bordered)
                 .tint(isRunning ? .yellow : .teal)
 
-                // Finish
+                // Finish manual
                 Button(action: viewModel.finishManually) {
                     Image(systemName: "flag.checkered")
                         .font(.title3)
@@ -57,11 +62,13 @@ struct TimerPageView: View {
     // MARK: - Helpers
 
     private var timerColor: Color {
-        let ratio = viewModel.remainingTime / max(1, Double(viewModel.selectedHours * 3600 + viewModel.selectedMinutes * 60))
+        guard viewModel.workoutMode == .timed else { return .teal }
+        let total = Double(viewModel.selectedHours * 3600 + viewModel.selectedMinutes * 60)
+        let ratio = viewModel.remainingTime / max(1, total)
         switch ratio {
-        case 0.3...: return .white
-        case 0.1..<0.3: return .yellow
-        default: return .red
+        case 0.3...:      return .white
+        case 0.1..<0.3:   return .yellow
+        default:           return .red
         }
     }
 
@@ -70,10 +77,17 @@ struct TimerPageView: View {
             Circle()
                 .fill(isRunning ? Color.green : Color.yellow)
                 .frame(width: 6, height: 6)
-                .opacity(isRunning ? 1 : 0.7)
 
             Text(isRunning ? "En curso" : "Pausado")
                 .font(.system(size: 10, weight: .medium))
+                .foregroundStyle(.secondary)
+
+            Text("·")
+                .foregroundStyle(.secondary)
+                .font(.system(size: 10))
+
+            Text(isFree ? "🆓 Libre" : "⏱ Tiempo")
+                .font(.system(size: 10))
                 .foregroundStyle(.secondary)
         }
     }

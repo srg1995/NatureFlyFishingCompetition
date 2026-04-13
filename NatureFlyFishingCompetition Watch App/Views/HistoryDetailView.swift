@@ -28,8 +28,9 @@ struct HistoryDetailView: View {
 
                 Divider()
 
-                // Duración
-                detailRow(icon: "timer", label: "Duración", value: session.formattedDuration, color: .white)
+                // Modo y duración
+                detailRow(icon: "dial.medium", label: "Modo",     value: session.modeLabel,          color: .teal)
+                detailRow(icon: "timer",       label: "Duración", value: session.formattedDuration,   color: .white)
 
                 Divider()
 

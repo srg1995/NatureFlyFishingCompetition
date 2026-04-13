@@ -23,30 +23,64 @@ struct SetupView: View {
 
                 Divider()
 
-                // Time picker
-                VStack(spacing: 4) {
-                    Text("Duración")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-
-                    HStack(spacing: 0) {
-                        Picker("Horas", selection: $viewModel.selectedHours) {
-                            ForEach(0...5, id: \.self) { h in
-                                Text("\(h)h").tag(h)
-                            }
+                // Selector de modo
+                HStack(spacing: 6) {
+                    ForEach(WorkoutMode.allCases, id: \.self) { mode in
+                        let selected = viewModel.workoutMode == mode
+                        Button {
+                            viewModel.workoutMode = mode
+                        } label: {
+                            Text(mode == .timed ? "⏱ Tiempo" : "🆓 Libre")
+                                .font(.system(size: 12, weight: selected ? .semibold : .regular))
+                                .frame(maxWidth: .infinity)
                         }
-                        .pickerStyle(.wheel)
-                        .frame(width: 60)
-
-                        Picker("Min", selection: $viewModel.selectedMinutes) {
-                            ForEach([0, 5, 10, 15, 20, 30, 45], id: \.self) { m in
-                                Text("\(m)m").tag(m)
-                            }
-                        }
-                        .pickerStyle(.wheel)
-                        .frame(width: 60)
+                        .buttonStyle(.bordered)
+                        .tint(selected ? .teal : .gray)
                     }
-                    .frame(height: 80)
+                }
+
+                // Configuración de duración (solo en modo timed)
+                if viewModel.workoutMode == .timed {
+                    VStack(spacing: 4) {
+                        Text("Duración")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        HStack(spacing: 0) {
+                            Picker("Horas", selection: $viewModel.selectedHours) {
+                                ForEach(0...5, id: \.self) { h in
+                                    Text("\(h)h").tag(h)
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                            .frame(width: 60)
+
+                            Picker("Min", selection: $viewModel.selectedMinutes) {
+                                ForEach([0, 5, 10, 15, 20, 30, 45], id: \.self) { m in
+                                    Text("\(m)m").tag(m)
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                            .frame(width: 60)
+                        }
+                        .frame(height: 80)
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                } else {
+                    // Descripción modo libre
+                    VStack(spacing: 4) {
+                        Image(systemName: "infinity")
+                            .font(.title3)
+                            .foregroundStyle(.teal)
+                        Text("Sin límite de tiempo")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Text("Tú decides cuándo parar")
+                            .font(.system(size: 10))
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.vertical, 6)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
                 }
 
                 // Start button
@@ -57,7 +91,12 @@ struct SetupView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.teal)
-                .disabled(viewModel.selectedHours == 0 && viewModel.selectedMinutes == 0)
+                .disabled(
+                    viewModel.workoutMode == .timed &&
+                    viewModel.selectedHours == 0 &&
+                    viewModel.selectedMinutes == 0
+                )
+                .animation(.easeInOut, value: viewModel.workoutMode)
 
                 // Historial
                 NavigationLink(destination: HistoryView()) {
@@ -88,6 +127,7 @@ struct SetupView: View {
                 }
             }
             .padding(.horizontal, 8)
+            .animation(.easeInOut(duration: 0.25), value: viewModel.workoutMode)
         }
         .navigationTitle("Inicio")
         .navigationBarTitleDisplayMode(.inline)

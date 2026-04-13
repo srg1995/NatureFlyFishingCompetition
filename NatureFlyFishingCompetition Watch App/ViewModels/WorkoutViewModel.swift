@@ -2,9 +2,18 @@ import Foundation
 import Combine
 import WatchKit
 
+// MARK: - Enums
+
 enum WorkoutState {
     case idle, running, paused, finished
 }
+
+enum WorkoutMode: String, Codable, CaseIterable {
+    case timed = "Tiempo"
+    case free  = "Libre"
+}
+
+// MARK: - ViewModel
 
 @MainActor
 final class WorkoutViewModel: ObservableObject {
@@ -12,35 +21,36 @@ final class WorkoutViewModel: ObservableObject {
     // MARK: - Published State
 
     @Published var workoutState: WorkoutState = .idle
+    @Published var workoutMode: WorkoutMode   = .timed
 
-    // Timer setup (editables antes del inicio)
+    // Configuración del timer (modo timed)
     @Published var selectedHours: Int   = 1
     @Published var selectedMinutes: Int = 0
 
-    // Tiempo restante en segundos
+    // Tiempo restante (modo timed) / transcurrido (modo libre)
     @Published var remainingTime: TimeInterval = 3600
+    @Published var elapsedTime:   TimeInterval = 0
 
     // Contadores
     @Published var pecesT: Int = 0
     @Published var pecesM: Int = 0
 
     // Post-workout
-    @Published var lastSession: WorkoutSession?
-    @Published var isSyncing: Bool = false
+    @Published var lastSession:    WorkoutSession?
+    @Published var isSyncing:      Bool = false
     @Published var healthKitSaved: Bool = false
-    @Published var stravaSaved: Bool = false
-    @Published var syncError: String?
+    @Published var stravaSaved:    Bool = false
+    @Published var syncError:      String?
 
     // MARK: - Private
 
     private let healthKit = HealthKitService()
     private let strava    = StravaService()
 
-    private var startDate: Date?
-    private var pauseDate: Date?
+    private var startDate:        Date?
+    private var pauseDate:        Date?
     private var accumulatedPause: TimeInterval = 0
-
-    private var timer: Timer?
+    private var timer:            Timer?
 
     private var totalDuration: TimeInterval {
         TimeInterval(selectedHours * 3600 + selectedMinutes * 60)
@@ -48,15 +58,23 @@ final class WorkoutViewModel: ObservableObject {
 
     // MARK: - Computed
 
-    var formattedRemaining: String {
-        let total  = Int(max(0, remainingTime))
-        let h = total / 3600
-        let m = total / 60 % 60
-        let s = total % 60
-        return String(format: "%02d:%02d:%02d", h, m, s)
+    /// Tiempo que se muestra en pantalla según el modo
+    var formattedDisplay: String {
+        switch workoutMode {
+        case .timed: return formatted(remainingTime)
+        case .free:  return formatted(elapsedTime)
+        }
     }
 
     var stravaAuthenticated: Bool { strava.isAuthenticated }
+
+    // MARK: - Mode
+
+    func setMode(_ mode: WorkoutMode) {
+        guard workoutState == .idle else { return }
+        workoutMode = mode
+        remainingTime = totalDuration
+    }
 
     // MARK: - Timer Controls
 
@@ -64,16 +82,16 @@ final class WorkoutViewModel: ObservableObject {
         guard workoutState == .idle || workoutState == .paused else { return }
 
         if workoutState == .idle {
-            remainingTime   = totalDuration
-            startDate       = Date()
+            remainingTime    = totalDuration
+            elapsedTime      = 0
+            startDate        = Date()
             accumulatedPause = 0
-            pecesT = 0
-            pecesM = 0
-            syncError = nil
-            healthKitSaved = false
-            stravaSaved    = false
+            pecesT           = 0
+            pecesM           = 0
+            syncError        = nil
+            healthKitSaved   = false
+            stravaSaved      = false
 
-            // Iniciar sesión HealthKit
             healthKit.requestPermissions { [weak self] success, _ in
                 guard let self, success, let start = self.startDate else { return }
                 self.healthKit.startSession(startDate: start)
@@ -93,7 +111,7 @@ final class WorkoutViewModel: ObservableObject {
     func pauseWorkout() {
         guard workoutState == .running else { return }
         timer?.invalidate()
-        timer = nil
+        timer     = nil
         pauseDate = Date()
         workoutState = .paused
         WKInterfaceDevice.current().play(.stop)
@@ -101,15 +119,16 @@ final class WorkoutViewModel: ObservableObject {
 
     func resetWorkout() {
         timer?.invalidate()
-        timer = nil
-        workoutState  = .idle
-        remainingTime = totalDuration
-        startDate     = nil
-        pauseDate     = nil
+        timer            = nil
+        workoutState     = .idle
+        remainingTime    = totalDuration
+        elapsedTime      = 0
+        startDate        = nil
+        pauseDate        = nil
         accumulatedPause = 0
-        pecesT = 0
-        pecesM = 0
-        syncError = nil
+        pecesT           = 0
+        pecesM           = 0
+        syncError        = nil
     }
 
     func finishManually() {
@@ -135,49 +154,55 @@ final class WorkoutViewModel: ObservableObject {
     private func tick() {
         guard let start = startDate else { return }
 
-        let elapsed = Date().timeIntervalSince(start) - accumulatedPause
-        remainingTime = max(0, totalDuration - elapsed)
+        let elapsed  = Date().timeIntervalSince(start) - accumulatedPause
+        elapsedTime  = elapsed
 
-        if remainingTime <= 0 {
-            timer?.invalidate()
-            timer = nil
-            completeWorkout()
+        switch workoutMode {
+        case .timed:
+            remainingTime = max(0, totalDuration - elapsed)
+            if remainingTime <= 0 {
+                timer?.invalidate()
+                timer = nil
+                completeWorkout()
+            }
+        case .free:
+            break // Sin fin automático — el usuario pulsa la bandera
         }
     }
 
     private func completeWorkout() {
-        let endDate  = Date()
-        let start    = startDate ?? endDate.addingTimeInterval(-totalDuration)
-        let elapsed  = endDate.timeIntervalSince(start) - accumulatedPause
+        let endDate = Date()
+        let start   = startDate ?? endDate.addingTimeInterval(-elapsedTime)
+        let elapsed = endDate.timeIntervalSince(start) - accumulatedPause
+
+        let duration: TimeInterval = workoutMode == .timed
+            ? min(elapsed, totalDuration)
+            : elapsed
 
         let session = WorkoutSession(
             startDate: start,
             endDate:   endDate,
-            duration:  min(elapsed, totalDuration),
+            duration:  duration,
             pecesT:    pecesT,
-            pecesM:    pecesM
+            pecesM:    pecesM,
+            mode:      workoutMode
         )
+
         lastSession  = session
         workoutState = .finished
         WKInterfaceDevice.current().play(.success)
 
-        // Guardar en historial local
         WorkoutHistoryStore.shared.add(session)
-
         syncWorkout(session: session)
     }
 
     private func syncWorkout(session: WorkoutSession) {
         isSyncing = true
 
-        // HealthKit
         healthKit.endSession(endDate: session.endDate) { [weak self] success, _ in
-            Task { @MainActor [weak self] in
-                self?.healthKitSaved = success
-            }
+            Task { @MainActor [weak self] in self?.healthKitSaved = success }
         }
 
-        // Strava
         Task {
             do {
                 try await strava.uploadActivity(session: session)
@@ -191,5 +216,13 @@ final class WorkoutViewModel: ObservableObject {
 
     private func haptic() {
         WKInterfaceDevice.current().play(.click)
+    }
+
+    private func formatted(_ time: TimeInterval) -> String {
+        let total = Int(max(0, time))
+        let h = total / 3600
+        let m = total / 60 % 60
+        let s = total % 60
+        return String(format: "%02d:%02d:%02d", h, m, s)
     }
 }
