@@ -5,42 +5,42 @@
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
-      "size" : "40x40"
+      "size" : "20x20"
     },
     {
       "filename" : "AppIcon-48x48@2x.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
-      "size" : "48x48"
+      "size" : "24x24"
     },
     {
       "filename" : "AppIcon-55x55@2x.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
-      "size" : "55x55"
+      "size" : "27.5x27.5"
     },
     {
       "filename" : "AppIcon-86x86@2x.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
-      "size" : "86x86"
+      "size" : "43x43"
     },
     {
       "filename" : "AppIcon-108x108@2x.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
-      "size" : "108x108"
+      "size" : "54x54"
     },
     {
       "filename" : "AppIcon-117x117@2x.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
-      "size" : "117x117"
+      "size" : "58.5x58.5"
     }
   ],
   "info" : {
