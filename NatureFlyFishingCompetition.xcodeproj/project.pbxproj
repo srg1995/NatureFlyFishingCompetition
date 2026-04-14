@@ -20,12 +20,14 @@
 		A68F4EA97FDC0365E43A476E /* CountersPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B883B559BE8AA0C20F5946C /* CountersPageView.swift */; };
 		BBBA40F13DB05742EBD6C124 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21FD26124EB4525C5F1FA5C /* SetupView.swift */; };
 		BF4CEAFDBE8063224F5EA47B /* WorkoutHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07E3DE7264B2252581990F /* WorkoutHistoryStore.swift */; };
+		C4F49B921F101879F8CE88E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09ACB44ECBF21664F6EBB9CC /* Assets.xcassets */; };
 		DC6F28B68DFD0E60E43B9CDE /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37641ED090D00AD4B6DC0934 /* WatchKit.framework */; };
 		DD5E23F53EE1B5869C57A487 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720D00B6954C7BADA7F4E790 /* SummaryView.swift */; };
 		E1E9ECA0A24BB0CAE50C5143 /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A310A2A3F1A7EDFA67DB31 /* WorkoutViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09ACB44ECBF21664F6EBB9CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24A310A2A3F1A7EDFA67DB31 /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		2D07E3DE7264B2252581990F /* WorkoutHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryStore.swift; sourceTree = "<group>"; };
 		31882BC6F46FFBBA3CD8814B /* NatureFlyFishingCompetition Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NatureFlyFishingCompetition Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 				F7A6A86C279BC125B9FFD575 /* Services */,
 				B513AB33630D7C0794807B83 /* ViewModels */,
 				098B126AF1E912B41F3949F0 /* Views */,
+				09ACB44ECBF21664F6EBB9CC /* Assets.xcassets */,
 				F7999088DB9FB0738B0ECB7D /* ContentView.swift */,
 				5B4BE8C39D75706FBA2D41D0 /* NatureFlyFishingCompetitionApp.swift */,
 			);
@@ -145,6 +148,7 @@
 			buildConfigurationList = BC6E0972EFF77BAB945DDDB4 /* Build configuration list for PBXNativeTarget "NatureFlyFishingCompetition Watch App" */;
 			buildPhases = (
 				99E4F7A413770E665FD6C997 /* Sources */,
+				90B3FF54BA87F34133A3602C /* Resources */,
 				068D8964DB418B59DE2DFBF4 /* Frameworks */,
 			);
 			buildRules = (
@@ -166,6 +170,12 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					65545E4DAC4E795A4E5444A2 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = FACA9EBA60DFA27C31C13938 /* Build configuration list for PBXProject "NatureFlyFishingCompetition" */;
 			developmentRegion = en;
@@ -185,6 +195,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		90B3FF54BA87F34133A3602C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4F49B921F101879F8CE88E1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		99E4F7A413770E665FD6C997 /* Sources */ = {
@@ -279,15 +300,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "NatureFlyFishingCompetition Watch App/NatureFlyFishingCompetition Watch App.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9U57AH6SLZ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "NatureFlyFishingCompetition Watch App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sergiosacristan.trainerwatch2026;
+				PRODUCT_BUNDLE_IDENTIFIER = com.natureflyfish.watch;
 				PRODUCT_NAME = "NatureFlyFishingCompetition Watch App";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
@@ -301,15 +321,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "NatureFlyFishingCompetition Watch App/NatureFlyFishingCompetition Watch App.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9U57AH6SLZ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "NatureFlyFishingCompetition Watch App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sergiosacristan.trainerwatch2026;
+				PRODUCT_BUNDLE_IDENTIFIER = com.natureflyfish.watch;
 				PRODUCT_NAME = "NatureFlyFishingCompetition Watch App";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;

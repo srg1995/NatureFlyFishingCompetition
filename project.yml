@@ -25,6 +25,9 @@ targets:
           - "*.entitlements"
           - "*.plist"
 
+    resources:
+      - path: "NatureFlyFishingCompetition Watch App/Assets.xcassets"
+
     info:
       path: "NatureFlyFishingCompetition Watch App/Info.plist"
       properties:
